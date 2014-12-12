@@ -1,0 +1,11 @@
+Game/Debug/
+Game/ipch/
+Game/Setup/
+Game/game.sdf
+Game/*.lib
+Game/*.opensdf
+*.suo
+Game/UpgradeLog.XML
+Game/UpgradeLog.htm
+Game/_UpgradeReport_Files/
+*.meta
