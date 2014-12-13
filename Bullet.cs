@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
 	private Vector3 forwardDirection;
 	private bool lockDirection = false;
+	private List<string> enemy_tags;
 	public float Speed = 0.5f;
 
 	// Use this for initialization
@@ -27,8 +29,14 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "ENEMY")
-			Destroy(this.gameObject);
+		foreach(string enemy in enemy_tags)
+		{
+			if(other.tag == enemy)
+			{
+				Destroy(this.gameObject);
+				break;
+			}
+		}
 	}
 
 	public void SetForwardDirection(Vector3 forward)
@@ -38,5 +46,19 @@ public class Bullet : MonoBehaviour {
 			forwardDirection = forward;
 			lockDirection = true;
 		}
+	}
+
+	public void SetEnemy(string enemy)
+	{
+		if(enemy_tags == null)
+			enemy_tags = new List<string> ();
+		enemy_tags.Add (enemy);
+	}
+
+	public void SetEnemys(IEnumerable<string> enemies)
+	{
+		IEnumerator<string> iterator = enemies.GetEnumerator();
+		while (iterator.MoveNext())
+			SetEnemy (iterator.Current);
 	}
 }
