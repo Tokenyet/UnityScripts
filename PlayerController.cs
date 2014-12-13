@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 			pX += forwardDirection.x * ForwardSpeed;
 			pY += forwardDirection.y * ForwardSpeed;
 			pZ += forwardDirection.z * ForwardSpeed;
+			this.transform.forward = forwardDirection;//按了轉身
 		}
 		if (Input.GetKey (KeyCode.S))
 		{
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		forwardDirection = forward;
 		forwardDirection.y = 0;
+		//this.transform.forward = forwardDirection;//隨時轉身
 	}
 
 	public void SetRightDirection(Vector3 right)
