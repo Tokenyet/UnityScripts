@@ -6,15 +6,19 @@ public class Health : MonoBehaviour {
 
 	public Slider Slider;
 	public int Hp;
-	private int hp;
+	protected int hp;
 	// Use this for initialization
 	void Start () {
 		hp = Hp;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		HookFunctuon ();
 	}
+
+	protected virtual void HookFunctuon ()
+	{}
 
 	public bool Damage(int damage)
 	{
@@ -36,7 +40,7 @@ public class Health : MonoBehaviour {
 		UpdateSlider ();
 	}
 
-	private void UpdateSlider()
+	protected virtual void UpdateSlider()
 	{
 		float f_hp = (float)hp;
 		float f_Hp = (float)Hp;

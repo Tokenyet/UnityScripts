@@ -7,7 +7,9 @@ public class Bullet : MonoBehaviour {
 	private Vector3 forwardDirection;
 	private bool lockDirection = false;
 	private List<string> enemy_tags;
+	private int damage = 2;
 	public float Speed = 0.5f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +36,7 @@ public class Bullet : MonoBehaviour {
 			if(other.tag == enemy)
 			{
 				Health hp = other.GetComponent<Health>();
-				hp.Damage(2);
+				hp.Damage(damage);
 				Destroy(this.gameObject);
 				break;
 			}
@@ -62,5 +64,12 @@ public class Bullet : MonoBehaviour {
 		IEnumerator<string> iterator = enemies.GetEnumerator();
 		while (iterator.MoveNext())
 			SetEnemy (iterator.Current);
+	}
+
+	public void SetDamage(int damage)
+	{
+		if (damage < 0)
+			return;
+		this.damage = damage;
 	}
 }

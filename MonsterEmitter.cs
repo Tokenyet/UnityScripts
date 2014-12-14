@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MonsterEmitter : MonoBehaviour {
 	public Bullet sampleBullet = null;
+	public int Damage;
 	private float shootingCounting;
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class MonsterEmitter : MonoBehaviour {
 			shootingCounting = 0;
 			Bullet bullet = Instantiate(sampleBullet,this.transform.position,this.transform.rotation) as Bullet;
 			bullet.Speed = 0.5f;
+			bullet.SetDamage(Damage);
 			bullet.SetForwardDirection(this.transform.forward);
 			bullet.SetEnemy("PLAYER");
 		}
