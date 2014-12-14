@@ -33,6 +33,8 @@ public class Bullet : MonoBehaviour {
 		{
 			if(other.tag == enemy)
 			{
+				Health hp = other.GetComponent<Health>();
+				hp.Damage(2);
 				Destroy(this.gameObject);
 				break;
 			}

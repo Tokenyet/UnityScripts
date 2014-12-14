@@ -14,7 +14,7 @@ public class MonsterEmitter : MonoBehaviour {
 		if(sampleBullet == null)
 			return;
 		shootingCounting += Time.deltaTime;
-		Debug.Log (shootingCounting);
+		//Debug.Log (shootingCounting);
 		if(shootingCounting > 1.5f)
 		{
 			shootingCounting = 0;
